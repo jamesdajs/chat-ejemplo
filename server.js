@@ -2,8 +2,8 @@
 // server.js
 const app = require('express')();
 const https = require('https');
-const fs = require('fs');
-const { Server } = require("socket.io");
+//const fs = require('fs');
+//const { Server } = require("socket.io");
 
 /*const options = {
     key: fs.readFileSync('server.key'),
@@ -23,12 +23,12 @@ app.get('/', (req, res) => {
 
 
 let server = https.createServer( app)
-const io = new Server(server);
+/*const io = new Server(server);
 io.on('connection', (socket) => {
   socket.on('chat message', (msg) => {
     io.emit('chat message', msg);
   });
-});
+});*/
 server.listen(3000, () => {
   console.log('Server is running on port 3000');
 });
