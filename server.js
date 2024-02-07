@@ -5,20 +5,16 @@ const https = require('https');
 const fs = require('fs');
 const { Server } = require("socket.io");
 
-const options = {
+/*const options = {
     key: fs.readFileSync('server.key'),
     cert: fs.readFileSync('server.crt'),
-}
+}*/
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-var messages=[{
-  id: 1,
-  text: "Hola! Soy un mensaje de prueba",
-  author: "Anonimo"
-}];
+
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
@@ -26,7 +22,7 @@ app.get('/', (req, res) => {
 
 
 
-let server = https.createServer(options, app)
+let server = https.createServer( app)
 const io = new Server(server);
 io.on('connection', (socket) => {
   socket.on('chat message', (msg) => {
