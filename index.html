@@ -25,7 +25,13 @@
   <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
     <script>
       var socket = io();
-
+      socket.on('connect', () => {
+        console.log('Conectado al servidor de Socket.IO');
+        
+      });
+      socket.on('connect_error', (error) => {
+        console.error('Error de conexión:', error);
+      });
       var messages = document.getElementById('messages');
       var form = document.getElementById('form');
       var input = document.getElementById('input');
